@@ -1,9 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        
         <title>Contact</title>
-
         <!-- Favicon-->
         <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
         <!-- Custom Google font-->
@@ -54,7 +52,7 @@
                                 <!-- To make this form functional, sign up at-->
                                 <!-- https://startbootstrap.com/solution/contact-forms-->
                                 <!-- to get an API token!-->
-                                <form id="contactForm" data-sb-form-api-token="API_TOKEN">
+                                <form onsubmit="sendEmail(); reset(); return false" id="contactForm">
                                     <!-- Name input-->
                                     <div class="form-floating mb-3">
                                         <input class="form-control" id="name" type="text" placeholder="Enter your name..." data-sb-validations="required" />
@@ -87,9 +85,6 @@
                                     <div class="d-none" id="submitSuccessMessage">
                                         <div class="text-center mb-3">
                                             <div class="fw-bolder">Form submission successful!</div>
-                                            To activate this form, sign up at
-                                            <br />
-                                            <a href="https://startbootstrap.com/solution/contact-forms">https://startbootstrap.com/solution/contact-forms</a>
                                         </div>
                                     </div>
                                     <!-- Submit error message-->
@@ -102,7 +97,7 @@
                                 </form>
                             </div>
                         </div>
-                    </div>
+                    </div> 
                 </div>
             </section>
         </main>
@@ -132,5 +127,22 @@
         <!-- * * Activate your form at https://startbootstrap.com/solution/contact-forms * *-->
         <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
         <script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
+        <script src="https://smtpjs.com/v3/smtp.js"></script>
+        <script>
+            function sendEmail() {
+                Email.send({
+                    Host : "smtp.gmail.com",
+                    Username : "digwijaypatil6521@gmail.com",
+                    Password : "Digwijay@07",
+                    To : 'patildigvijay7878@gmail.com',
+                    From : document.getElementById("email").value,
+                    Subject : "New Contact Form Enquiry",
+                    Body : "And this is the body"
+                }).then(
+                message => alert(message)
+                );
+            }
+    
+        </script>
     </body>
 </html>
